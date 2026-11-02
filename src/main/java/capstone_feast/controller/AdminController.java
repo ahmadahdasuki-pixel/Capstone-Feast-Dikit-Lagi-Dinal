@@ -1,71 +1,47 @@
 package capstone_feast.controller;
 
-import capstone_feast.view.Admin;
-import capstone_feast.view.Login;
-import javax.swing.JOptionPane;
+import capstone_feast.dao.DashboardAdminDao;
+import capstone_feast.view.DashboardAdmin;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 public class AdminController {
-    private Admin frame;
+    private DashboardAdmin frame;
+    private DashboardAdminDao dao;
 
-    public AdminController(Admin frame) {
+    public AdminController(DashboardAdmin frame) {
         this.frame = frame;
-        initController();
+        this.dao = new DashboardAdminDao();
+        
+        // Load data tabel saat pertama kali dibuka
+        loadTabelBatch("Semua");
+        
+        // Tangani event ketika pilihan ComboBox "Pilih Status" diubah
+        if (frame.getCmbStatus() != null) {
+            for (java.awt.event.ActionListener al : frame.getCmbStatus().getActionListeners()) {
+                frame.getCmbStatus().removeActionListener(al);
+            }
+            
+            frame.getCmbStatus().addActionListener(e -> {
+                String statusPilihan = frame.getCmbStatus().getSelectedItem().toString();
+                loadTabelBatch(statusPilihan);
+            });
+        }
     }
 
-    // Menghubungkan event handler untuk setiap tombol pada Sidebar form Admin
-    private void initController() {
-        // Tombol Dashboard
-        frame.getBtnDashboard().addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Anda sudah berada di halaman Dashboard.");
-        });
+    public void loadTabelBatch(String statusFilter) {
+        DefaultTableModel model = (DefaultTableModel) frame.getTabelBatchTerbaru().getModel();
+        model.setRowCount(0); // Kosongkan baris agar tidak duplikat
 
-        // Tombol Bahan Baku (Menu Data Master)
-        frame.getBtnBahan().addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Membuka Form Pengelolaan Bahan Baku...");
-            // TODO: Tambahkan instansiasi form Bahan Baku di sini jika sudah dibuat
-        });
+        List<Object[]> dataBatch = dao.getBatchTerbaru();
 
-        // Tombol Produk (Menu Data Master)
-        frame.getBtnProduk().addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Membuka Form Pengelolaan Produk...");
-            // TODO: Tambahkan instansiasi form Produk di sini jika sudah dibuat
-        });
+        for (Object[] row : dataBatch) {
+            String statusBatch = (String) row[4]; 
 
-        // Tombol Resep (Menu Data Master)
-        frame.getBtnResep().addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Membuka Form Pengelolaan Resep...");
-            // TODO: Tambahkan instansiasi form Resep di sini jika sudah dibuat
-        });
-
-        // Tombol Distributor (Menu Data Master)
-        frame.getBtnDistributor().addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Membuka Form Pengelolaan Distributor...");
-            // TODO: Tambahkan instansiasi form Distributor di sini jika sudah dibuat
-        });
-
-        // Tombol Kelola Akun Staff
-        frame.getBtnKelolaAkun().addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Membuka Form Kelola Akun Staff...");
-            // TODO: Tambahkan instansiasi form Kelola Akun Staff di sini jika sudah dibuat
-        });
-
-        // Tombol Logout (Sesuai alur flowchart: Konfirmasi -> Kembali ke Login)
-        frame.getBtnLogout().addActionListener(e -> prosesLogout());
-    }
-
-    // Logika Konfirmasi Logout
-    public void prosesLogout() {
-        int confirm = JOptionPane.showConfirmDialog(
-            frame, 
-            "Yakin Ingin Keluar?", 
-            "Konfirmasi Logout", 
-            JOptionPane.YES_NO_OPTION, 
-            JOptionPane.QUESTION_MESSAGE
-        );
-
-        if (confirm == JOptionPane.YES_OPTION) {
-            frame.dispose(); // Menutup jendela form Admin
-            new Login().setVisible(true); // Membuka kembali halaman Login utama
+            if (statusFilter.equalsIgnoreCase("Semua") || 
+                (statusBatch != null && statusBatch.equalsIgnoreCase(statusFilter))) {
+                model.addRow(row);
+            }
         }
     }
 }

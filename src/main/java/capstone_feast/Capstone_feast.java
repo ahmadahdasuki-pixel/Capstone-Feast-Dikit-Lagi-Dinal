@@ -7,7 +7,6 @@ import javax.swing.UIManager;
 public class Capstone_feast {
 
     public static void main(String[] args) {
-        // Mengatur tampilan (Look and Feel) agar sesuai dengan sistem operasi / Nimbus
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -19,7 +18,6 @@ public class Capstone_feast {
             System.out.println("Gagal mengatur Look and Feel: " + e.getMessage());
         }
 
-        // Menjalankan form Login pertama kali menggunakan Event Dispatch Thread (EDT)
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

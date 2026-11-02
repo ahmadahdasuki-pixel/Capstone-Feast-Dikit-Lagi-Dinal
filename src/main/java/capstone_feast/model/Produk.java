@@ -1,22 +1,33 @@
 package capstone_feast.model;
 
 public class Produk {
-    private String idProduk;
+    private int idProduk;
+    private int idAdmin;
     private String namaProduk;
     private String satuanProduk;
     private double hargaJual;
     private String statusProduk;
 
-    public Produk(String idProduk, String namaProduk, String satuanProduk, double hargaJual, String statusProduk) {
+    // 1. TAMBAHKAN KONSTRUKTOR KOSONG INI (Wajib agar new Produk() tidak error)
+    public Produk() {
+    }
+
+    // 2. Konstruktor dengan parameter (jika sudah ada sebelumnya, biarkan saja)
+    public Produk(int idProduk, int idAdmin, String namaProduk, String satuanProduk, double hargaJual, String statusProduk) {
         this.idProduk = idProduk;
+        this.idAdmin = idAdmin;
         this.namaProduk = namaProduk;
         this.satuanProduk = satuanProduk;
         this.hargaJual = hargaJual;
         this.statusProduk = statusProduk;
     }
 
-    public String getIdProduk() { return idProduk; }
-    public void setIdProduk(String idProduk) { this.idProduk = idProduk; }
+    // Getter dan Setter
+    public int getIdProduk() { return idProduk; }
+    public void setIdProduk(int idProduk) { this.idProduk = idProduk; }
+
+    public int getIdAdmin() { return idAdmin; }
+    public void setIdAdmin(int idAdmin) { this.idAdmin = idAdmin; }
 
     public String getNamaProduk() { return namaProduk; }
     public void setNamaProduk(String namaProduk) { this.namaProduk = namaProduk; }
@@ -29,4 +40,9 @@ public class Produk {
 
     public String getStatusProduk() { return statusProduk; }
     public void setStatusProduk(String statusProduk) { this.statusProduk = statusProduk; }
+
+    @Override
+    public String toString() {
+        return namaProduk; // Menampilkan nama produk pada ComboBox
+    }
 }

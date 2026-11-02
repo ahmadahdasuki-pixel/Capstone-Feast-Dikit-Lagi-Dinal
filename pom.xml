@@ -21,16 +21,17 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>8.3.0</version>
         </dependency>
+        
+        <!-- AbsoluteLayout resmi dari Maven Central (menggantikan unknown.binary) -->
         <dependency>
-            <groupId>unknown.binary</groupId>
+            <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
-            <version>SNAPSHOT</version>
+            <version>RELEASE180</version>
         </dependency>
     </dependencies>
 
     <build>
         <resources>
-            <!-- Mengaktifkan resource folder agar gambar dan aset terbaca saat di-build -->
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
@@ -38,13 +39,6 @@
                     <include>**/*.jpg</include>
                     <include>**/*.jpeg</include>
                     <include>**/*.properties</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.png</include>
-                    <include>**/*.jpg</include>
                 </includes>
             </resource>
         </resources>
@@ -60,7 +54,7 @@
                 </configuration>
             </plugin>
             
-            <!-- Plugin agar aplikasi Java Swing/Main Class bisa dieksekusi dengan mudah -->
+            <!-- Plugin agar aplikasi Java Swing/Main Class bisa dieksekusi -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -71,11 +65,5 @@
             </plugin>
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <id>unknown-jars-temp-repo</id>
-            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
-            <url>file:${project.basedir}/lib</url>
-        </repository>
-    </repositories>
+    <name>capstone_feast_part_2</name>
 </project>

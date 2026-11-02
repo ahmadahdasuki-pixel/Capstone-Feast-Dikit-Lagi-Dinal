@@ -1,10 +1,11 @@
 package capstone_feast.controller;
 
+import capstone_feast.config.UserSession;
 import capstone_feast.dao.LoginDao;
 import capstone_feast.model.Pengguna;
-import capstone_feast.view.Admin;
+import capstone_feast.view.DashboardAdmin;
+import capstone_feast.view.DashboardStaff;
 import capstone_feast.view.Login;
-import capstone_feast.view.Staff;
 import javax.swing.JOptionPane;
 
 public class LoginController {
@@ -19,6 +20,14 @@ public class LoginController {
 
     private void initController() {
         frame.getBtnLogin().addActionListener(e -> prosesLogin());
+
+        frame.getChkLihatPassword().addActionListener(e -> {
+            if (frame.getChkLihatPassword().isSelected()) {
+                frame.getTxtPassword().setEchoChar((char) 0);
+            } else {
+                frame.getTxtPassword().setEchoChar('•'); 
+            }
+        });
     }
 
     public void prosesLogin() {
@@ -34,23 +43,27 @@ public class LoginController {
         Pengguna user = loginDao.login(username, password);
 
         if (user != null) {
-            // Memanggil method getRole() secara polimorfisme dari subclass Admin/Staff
             String role = user.getRole(); 
             
+            // Simpan data nama dan role ke UserSession
+            String namaUser = user.getNamaPengguna(); 
+            UserSession.setNamaUser(namaUser);
+            UserSession.setRole(role);
+
             JOptionPane.showMessageDialog(frame, "Login Berhasil sebagai " + role + "!");
 
-            // Pengecekan perpindahan halaman berdasarkan role polimorfik
+            // 1. Tutup jendela login sekali saja di sini agar tidak menumpuk
+            frame.dispose();
+
+            // 2. Buka halaman dashboard berdasarkan role masing-masing
             if ("Admin".equalsIgnoreCase(role)) {
-                new Admin().setVisible(true); // Membuka form Admin
+                new DashboardAdmin().setVisible(true); 
             } else if ("Staff".equalsIgnoreCase(role)) {
-                new Staff().setVisible(true); // Membuka form Staff
+                new DashboardStaff().setVisible(true); 
             } else {
-                JOptionPane.showMessageDialog(frame, "Role pengguna tidak dikenal!", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
+                JOptionPane.showMessageDialog(null, "Role pengguna tidak dikenal!", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            // Menutup jendela login
-            frame.dispose();
         } else {
             JOptionPane.showMessageDialog(frame, "Login Gagal! Periksa kembali username, password, atau status akun Anda.", "Error", JOptionPane.ERROR_MESSAGE);
         }

@@ -17,7 +17,39 @@ public class KelolaAkunStaff extends javax.swing.JFrame {
      */
     public KelolaAkunStaff() {
         initComponents();
+        new capstone_feast.controller.StaffController(this);
+        setLocationRelativeTo(null);
     }
+
+    public javax.swing.JTable getTabelStaff() {
+        return jTable1; 
+    }
+
+    public javax.swing.JButton getBtnTambah() {
+        return btnTambahAkun; 
+    }
+
+    public javax.swing.JButton getBtnRefresh() {
+        return btnRefresh; 
+    }
+    
+    public javax.swing.JButton getBtnUbah() {
+        return btnUbahData; 
+    }
+
+    public javax.swing.JButton getBtnHapus() {
+        return btnHapusData; 
+    }
+
+    public javax.swing.JTextField getTxtPencarian() {
+        return PencarianNama; 
+    }
+    
+    public javax.swing.JButton getBtnLogout(){
+        return btnLogout;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,21 +60,320 @@ public class KelolaAkunStaff extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel2 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnDashboard = new javax.swing.JButton();
+        btnBahan = new javax.swing.JButton();
+        btnProduk = new javax.swing.JButton();
+        btnResep = new javax.swing.JButton();
+        btnDistributor = new javax.swing.JButton();
+        btnKelolaAkun = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        btnTambahAkun = new javax.swing.JButton();
+        PencarianNama = new javax.swing.JTextField();
+        btnRefresh = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        btnUbahData = new javax.swing.JButton();
+        btnHapusData = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(153, 51, 0));
+
+        jLabel14.setFont(new java.awt.Font("Baskerville Old Face", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("KELOLA DATA AKUN STAFF");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(468, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addGap(342, 342, 342))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 50));
+
+        jPanel1.setBackground(new java.awt.Color(153, 51, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnDashboard.setBackground(new java.awt.Color(153, 51, 0));
+        btnDashboard.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        btnDashboard.setForeground(new java.awt.Color(255, 255, 255));
+        btnDashboard.setText("Dashboard");
+        btnDashboard.addActionListener(this::btnDashboardActionPerformed);
+
+        btnBahan.setBackground(new java.awt.Color(153, 51, 0));
+        btnBahan.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        btnBahan.setForeground(new java.awt.Color(255, 255, 255));
+        btnBahan.setText("Bahan Baku");
+        btnBahan.addActionListener(this::btnBahanActionPerformed);
+
+        btnProduk.setBackground(new java.awt.Color(153, 51, 0));
+        btnProduk.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        btnProduk.setForeground(new java.awt.Color(255, 255, 255));
+        btnProduk.setText("Produk");
+        btnProduk.addActionListener(this::btnProdukActionPerformed);
+
+        btnResep.setBackground(new java.awt.Color(153, 51, 0));
+        btnResep.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        btnResep.setForeground(new java.awt.Color(255, 255, 255));
+        btnResep.setText("Resep");
+        btnResep.addActionListener(this::btnResepActionPerformed);
+
+        btnDistributor.setBackground(new java.awt.Color(153, 51, 0));
+        btnDistributor.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        btnDistributor.setForeground(new java.awt.Color(255, 255, 255));
+        btnDistributor.setText("Distributor");
+        btnDistributor.addActionListener(this::btnDistributorActionPerformed);
+
+        btnKelolaAkun.setBackground(new java.awt.Color(255, 204, 0));
+        btnKelolaAkun.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        btnKelolaAkun.setForeground(new java.awt.Color(153, 51, 0));
+        btnKelolaAkun.setText("Kelola Akun Staff");
+        btnKelolaAkun.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnKelolaAkun.addActionListener(this::btnKelolaAkunActionPerformed);
+
+        btnLogout.setBackground(new java.awt.Color(204, 0, 0));
+        btnLogout.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogout.setText("Logout");
+        btnLogout.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnLogout.addActionListener(this::btnLogoutActionPerformed);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Ahmad Ahdasuki\\Documents\\SEMESTER 3\\CAPSTONE\\Capstone-Part-2\\src\\main\\resources\\images\\Feast.png")); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKelolaAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResep, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBahan, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBahan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnResep, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDistributor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnKelolaAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 210, 570));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 204));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnTambahAkun.setBackground(new java.awt.Color(255, 204, 0));
+        btnTambahAkun.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        btnTambahAkun.setForeground(new java.awt.Color(102, 51, 0));
+        btnTambahAkun.setText("Tambah Akun +");
+        btnTambahAkun.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnTambahAkun.addActionListener(this::btnTambahAkunActionPerformed);
+
+        PencarianNama.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        PencarianNama.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnRefresh.setBackground(new java.awt.Color(153, 51, 0));
+        btnRefresh.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setText("Refresh ");
+        btnRefresh.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRefresh.addActionListener(this::btnRefreshActionPerformed);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nama Staff", "Username", "Password", "Status Akun", "No Telepon", "Shift"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setText("Cari Berdasarkan Nama, Username dan No Telepon");
+
+        btnUbahData.setBackground(new java.awt.Color(255, 204, 0));
+        btnUbahData.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        btnUbahData.setForeground(new java.awt.Color(102, 51, 0));
+        btnUbahData.setText("Ubah Data Akun");
+        btnUbahData.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUbahData.addActionListener(this::btnUbahDataActionPerformed);
+
+        btnHapusData.setBackground(new java.awt.Color(255, 204, 0));
+        btnHapusData.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        btnHapusData.setForeground(new java.awt.Color(102, 51, 0));
+        btnHapusData.setText("Hapus Data Akun");
+        btnHapusData.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnHapusData.addActionListener(this::btnHapusDataActionPerformed);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(PencarianNama, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTambahAkun, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUbahData, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnHapusData, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTambahAkun)
+                        .addComponent(btnUbahData)
+                        .addComponent(btnHapusData))
+                    .addComponent(PencarianNama))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 940, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBahanActionPerformed
+        new capstone_feast.view.BahanBaku().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBahanActionPerformed
+
+    private void btnProdukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdukActionPerformed
+        new capstone_feast.view.Produk().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnProdukActionPerformed
+
+    private void btnResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResepActionPerformed
+        new capstone_feast.view.Resep().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnResepActionPerformed
+
+    private void btnDistributorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDistributorActionPerformed
+        new capstone_feast.view.Distributor().setVisible(true); 
+        this.dispose();
+    }//GEN-LAST:event_btnDistributorActionPerformed
+
+    private void btnKelolaAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKelolaAkunActionPerformed
+
+    }//GEN-LAST:event_btnKelolaAkunActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnTambahAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahAkunActionPerformed
+        new capstone_feast.view.Register().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnTambahAkunActionPerformed
+
+    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
+        new capstone_feast.view.DashboardAdmin().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDashboardActionPerformed
+
+    private void btnUbahDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUbahDataActionPerformed
+
+    private void btnHapusDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHapusDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +401,26 @@ public class KelolaAkunStaff extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField PencarianNama;
+    private javax.swing.JButton btnBahan;
+    private javax.swing.JButton btnDashboard;
+    private javax.swing.JButton btnDistributor;
+    private javax.swing.JButton btnHapusData;
+    private javax.swing.JButton btnKelolaAkun;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnProduk;
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnResep;
+    private javax.swing.JButton btnTambahAkun;
+    private javax.swing.JButton btnUbahData;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

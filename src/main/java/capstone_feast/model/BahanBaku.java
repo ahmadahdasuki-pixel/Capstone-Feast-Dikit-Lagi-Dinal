@@ -9,7 +9,6 @@ public class BahanBaku {
     private double stokMinimum;
     private String statusBahanBaku;
 
-    // Constructor lengkap
     public BahanBaku(int idBahan, int idAdmin, String namaBahan, String satuan, double stokSaatIni, double stokMinimum, String statusBahanBaku) {
         this.idBahan = idBahan;
         this.idAdmin = idAdmin;
